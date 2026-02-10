@@ -23,7 +23,7 @@ public class User {
     @Column(nullable = false)
     private String lastName;
     @Column(nullable = false)
-    private String email;               // Required, valid email format
+    private String email;
     @Column(nullable = true)
     private String phoneNumber;
     @Column(nullable = false)
