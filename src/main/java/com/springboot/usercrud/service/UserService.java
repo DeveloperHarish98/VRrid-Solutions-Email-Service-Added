@@ -19,7 +19,6 @@ public class UserService {
 
 
     public User save(User user) {
-        // Set timestamps for new user
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
         user.setActive(true); // New users are active by default
@@ -50,10 +49,7 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
             User userToDelete = optionalUser.get();
-
-            // Hard delete - actually remove from database
             userRepository.deleteById(id);
-
             System.out.println("User permanently deleted: " + userToDelete.getFirstName() + " " + userToDelete.getLastName() + " (ID: " + id + ")");
 
             try {
@@ -106,7 +102,6 @@ public class UserService {
                         .append("' to '").append(user.isActive() ? "Active" : "Inactive").append("'<br>");
             }
 
-            // Update all fields
             currentUser.setFirstName(user.getFirstName());
             currentUser.setLastName(user.getLastName());
             currentUser.setEmail(user.getEmail());
